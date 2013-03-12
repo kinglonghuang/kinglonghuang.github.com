@@ -1,9 +1,17 @@
 ---
 layout: post
 title: "Welcome"
-date: 2013-03-12 09:22
+date: 2013-03-12 10:38
 comments: false
-categories: 
+categories: KLStudio
 ---
 
-HELLO Kinglong, Welcome to GitHub Pages!
+##Welcome to my homepage
+From now on, I am On the Way
+
+_Welcome to visit my website on iTuens_
+[KLStudio](https://itunes.apple.com/artist/klstudio/id547008717?mt=8)
+<!-- more -->
+>那没看见就信的有福了
+
+![Hello Kitty](http://placekitten.com/320/250 "title")
