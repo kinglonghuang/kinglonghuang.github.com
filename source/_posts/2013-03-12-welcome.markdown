@@ -3,7 +3,6 @@ layout: post
 title: "Welcome"
 date: 2013-03-12 10:38
 comments: true
-categories: KLStudio
 ---
 
 ##Welcome to my homepage
