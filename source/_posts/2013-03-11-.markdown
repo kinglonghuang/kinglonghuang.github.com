@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello Kitty"
+title: "Hello, Github Pages"
 date: 2013-03-11 18:03
 comments: true
 categories: 

@@ -2,7 +2,7 @@
 layout: post
 title: "Welcome"
 date: 2013-03-12 10:38
-comments: false
+comments: true
 categories: KLStudio
 ---
 
