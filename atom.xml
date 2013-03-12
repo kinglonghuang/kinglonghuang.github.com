@@ -4,10 +4,10 @@
   <title><![CDATA[KLStudio]]></title>
   <link href="http://kinglonghuang.github.com/atom.xml" rel="self"/>
   <link href="http://kinglonghuang.github.com/"/>
-  <updated>2013-03-12T13:09:47+08:00</updated>
+  <updated>2013-03-12T14:29:52+08:00</updated>
   <id>http://kinglonghuang.github.com/</id>
   <author>
-    <name><![CDATA[kinglong huang]]></name>
+    <name><![CDATA[KLStudio]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -31,6 +31,26 @@
 <blockquote><p>那没看见就信的有福了</p></blockquote>
 
 <p><img src="http://placekitten.com/320/250" title="title" alt="Hello Kitty" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Post On the Github]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/11/post-on-the-github/"/>
+    <updated>2013-03-11T18:03:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/11/post-on-the-github</id>
+    <content type="html"><![CDATA[<h1>This is a post from KLStudio</h1>
+
+<h2>I hope your like it</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Kitty]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/11/"/>
+    <updated>2013-03-11T18:03:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/</id>
+    <content type="html"><![CDATA[<p><img src="http://placekitten.com/320/250" title="title" alt="Hello Kitty" /></p>
 ]]></content>
   </entry>
   
