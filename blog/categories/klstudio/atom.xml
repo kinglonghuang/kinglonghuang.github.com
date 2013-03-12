@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: KLStudio | My Octopress Blog]]></title>
+  <link href="http://kinglonghuang.github.com/blog/categories/klstudio/atom.xml" rel="self"/>
+  <link href="http://kinglonghuang.github.com/"/>
+  <updated>2013-03-12T14:07:30+08:00</updated>
+  <id>http://kinglonghuang.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Welcome]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/12/welcome/"/>
+    <updated>2013-03-12T10:38:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/12/welcome</id>
+    <content type="html"><![CDATA[<h2>Welcome to my homepage</h2>
+
+<p>From now on, I am On the Way</p>
+
+<p><em>Welcome to visit my website on iTuens</em>
+<a href="https://itunes.apple.com/artist/klstudio/id547008717?mt=8">KLStudio</a></p>
+
+<!-- more -->
+
+
+<blockquote><p>那没看见就信的有福了</p></blockquote>
+
+<p><img src="http://placekitten.com/320/250" title="title" alt="Hello Kitty" /></p>
+]]></content>
+  </entry>
+  
+</feed>
