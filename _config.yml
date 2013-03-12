@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://kinglonghuang.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: KLStudio
+subtitle: 欢迎来到我的主页
+author: KLStudio
 simple_search: http://google.com/search
-description:
+description: Here is the website for KLStudio
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
