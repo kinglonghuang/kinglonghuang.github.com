@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Welcome"
+date: 2013-03-12 09:22
+comments: false
+categories: 
+---
+
+HELLO Kinglong, Welcome to GitHub Pages!
