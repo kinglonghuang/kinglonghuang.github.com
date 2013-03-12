@@ -93,3 +93,8 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+default_asides: [custom/about.html, asides/recent_posts.html]
+blog_index_asides: [custom/about.html, asides/recent_posts.html]
+post_asides: [custom/about.html, asides/recent_posts.html]
+
