@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[KLStudio]]></title>
+  <link href="http://kinglonghuang.github.com/atom.xml" rel="self"/>
+  <link href="http://kinglonghuang.github.com/"/>
+  <updated>2013-03-29T16:49:59+08:00</updated>
+  <id>http://kinglonghuang.github.com/</id>
+  <author>
+    <name><![CDATA[KLStudio]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ReviewBoard搭建]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/29/reviewboardda-jian/"/>
+    <updated>2013-03-29T16:39:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/29/reviewboardda-jian</id>
+    <content type="html"><![CDATA[<p>之前在Mac上折腾了一上午，最终因为包依赖的问题而放弃，转而投向了Ubuntu,因为apt-get实在是太好用，省去了许多包管理带来的麻烦
+不过在Ubuntu上安装也不会很省心，前面一路顺风，当执行&#8217;easy_install ReviewBoard&#8217; 时候总是卡在了安装pytz上面，提示访问http://pytz.sourceforge.net超时，但ping的时候又显示okay,所以怀疑是读取到下载地址后的下载超时，总不能在一棵树上吊死，所以只能先手动装上pytz,执行easy_install pytz完成之后继续easy_instal</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntuda Jian Reviewboard]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/27/ubuntuda-jian-reviewboard/"/>
+    <updated>2013-03-27T00:00:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/27/ubuntuda-jian-reviewboard</id>
+    <content type="html"><![CDATA[<p>之前在Mac上折腾了一上午，最终因为包依赖的问题而放弃，转而投向了Ubuntu,因为apt-get实在是太好用，省去了许多包管理带来的麻烦
+不过在Ubuntu上安装也不会很省心，前面一路顺风，当执行 easy_install ReviewBoard 时候总是卡在了安装pytz上面，提示访问http://pytz.sourceforge.net超时，但ping的时候又显示okay,所以怀疑是读取到下载地址后的下载超时，总不能在一棵树上吊死，所以看看怎么先装上pytz&#8230;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RSA算法]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/12/rsasuan-fa/"/>
+    <updated>2013-03-12T17:28:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/12/rsasuan-fa</id>
+    <content type="html"><![CDATA[<ul>
+<li>非对称加密：又名“公开密钥加密算法”，非对称加密算法需要两个密钥：公开密钥和私有密钥，常见算法有：RSA、Elgamal、背包算法、Rabin、D-H、ECC（椭圆曲线加密算法）</li>
+<li>对称加密：采用单钥密码系统的加密方法，同一个密钥可以同时用作信息的加密和解密，也称为单密钥加密。常见算法有：DES、IDEA、RC2、RC4、SKIPJACK、RC5、AES</li>
+</ul>
+
+
+<h4>RSA</h4>
+
+<p>RSA的算法涉及三个参数，n、e1、e2。
+其中，n是两个大质数p、q的积，n的二进制表示时所占用的位数，就是所谓的密钥长度。
+e1和e2是一对相关的值，e1可以任意取，但要求e1与(p-1)(q-1）互质；再选择e2，要求(e2e1)mod((p-1)*(q-1))=1。
+(n及e1),(n及e2)就是密钥对。</p>
+
+<p>RSA加解密的算法完全相同,设A为明文，B为密文，则：A=B<sup>e1</sup> mod n；B=A<sup>e2</sup> mod n；
+e1和e2可以互换使用，即：
+A=B<sup>e2</sup> mod n；B=A<sup>e1</sup> mod n；</p>
+
+<p>使用RSA有两种情况：</p>
+
+<ol>
+<li><p>对数据加密：您希望只有您的朋友可以解密，这样的话，您需要首先获取您朋友的密钥对中公开的那一个密钥，e及n。然后用这个密钥进行加密，这样密文只有您的朋友可以解密，因为对应的私钥只有您朋友拥有。</p></li>
+<li><p>数字签名：您向朋友传送一段数据附加您的数字签名，您需要对您的数据进行MD5之类的运算以取得数据的&#8221;指纹&#8221;，再对&#8221;指纹&#8221;进行加密，加密将使用您自己的密钥对中的不公开的私钥。您的朋友收到数据后，用同样的运算获得数据指纹，再用您的公钥对加密指纹进行解密，比较解密结果与他自己计算出来的指纹是否一致，即可确定数据是否的确是您发送的、以及在传输过程中是否被篡改。</p></li>
+</ol>
+
+
+<p>密钥的获得：通常由某个机构颁发（如CA中心），当然也可以自己创建密钥，但这样创建的密钥不具有权威性。</p>
+
+<p>密钥的计算：如果加密强度为1024位，则结果会在有效数据前面补0以补齐不足的位数。补入的0并不影响解密运算。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Welcome]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/12/welcome/"/>
+    <updated>2013-03-12T10:38:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/12/welcome</id>
+    <content type="html"><![CDATA[<h2>Welcome to my homepage</h2>
+
+<p>From now on, I am On the Way</p>
+
+<p><em>Welcome to visit my website on iTuens</em>
+<a href="https://itunes.apple.com/artist/klstudio/id547008717?mt=8">KLStudio</a></p>
+
+<!-- more -->
+
+
+<blockquote><p>那没看见就信的有福了</p></blockquote>
+
+<p><img src="http://placekitten.com/320/250" title="title" alt="Hello Kitty" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, Github Pages]]></title>
+    <link href="http://kinglonghuang.github.com/blog/2013/03/11/"/>
+    <updated>2013-03-11T18:03:00+08:00</updated>
+    <id>http://kinglonghuang.github.com/blog/2013/03/</id>
+    <content type="html"><![CDATA[<p><img src="http://placekitten.com/320/250" title="title" alt="Hello Kitty" /></p>
+]]></content>
+  </entry>
+  
+</feed>
