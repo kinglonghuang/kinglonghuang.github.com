@@ -99,42 +99,12 @@
 不过在Ubuntu上安装也不会很省心，前面一路顺风，当执行 <code>easy_install ReviewBoard</code> 时候总是卡在了安装pytz上面，提示访问http://pytz.sourceforge.net 超时，但ping的时候又显示okay,所以怀疑是读取到下载地址后的下载超时，总不能在一棵树上吊死，所以只能先手动装上pytz,执行<code>easy_install pytz</code>完成之后继续<code>easy_instal ReviewBoard</code>
 之后也碰到过其他的错误，不过google一下，基本都能解决</p>
 
-<p>安装完了ReviewBoard,就可以开始配置站点了，在此之前，最好先用mysql新建一张表，然后执行 <code>rb-site install /var/www/reviews.example.com</code> 之后就进入了一个交互式的安装过程啦，输入之前创建的表名，以及对该表有创建修改权限的用户（可以填入root用户，当然你也可以使用GRANT新指定一个用户），之后填入你的admin帐号信息，一路Next</p>
-
-<p>Okay，在浏览器输入localhost, 如果没有问题，会看到ReviewBoard的登陆页面，使用admin登入，点击右上角的用户头像，下拉菜单中有一个Admin，点击进去，在这里你就可以添加repository乐</p>
-
-<p>Reviewboard支持两种审核方式，pre-commit 和 post-commit</p>
-
-<ul>
-<li>pre-commit 在本地有变动，但没有提交到中心仓库前，提交review请求，有两种方法:</li>
-</ul>
-
-
-<p>a. 手动: 执行svn diff,将其输出到一个.diff文件中，在reviewboard的web页面上手动添加该diff文件，创建并发布一个新的review request</p>
-
-<p>b. RBTools: 它提供一个post-review的python脚本，可以在你当前svn checkout的目录或其任意父目录中创建.reviewboardrc文件，设置REVIEWBOARD_URL = &#8220;http://your/reviewboard/url&#8221;,之后执行<code>post-review</code>即可自动为你生成一个新的review request,默认是未发表的，你可以加上 -p参数指明创建后发表，更多参数，你可以参考<code>post-review -h</code></p>
-
-<ul>
-<li>post-commit 在本地改动提交之后，再创建的review request,你可以手动生成diff文件来创建review request，当然你仍然可以通过post-review 这个脚本来做，此时你需要指定revision-range这个参数来让脚本生成diff，否则脚本会说：好像没有任何改动吧？</li>
-</ul>
-
-
-<p>在使用post-review脚本的时候，还是碰到有意思的问题的，在ubuntu下面一切okay,但在mac机器下面，因为我既安装乐git，又装乐svn,结果使本来应该识别为SVN的识别成了git,而且还因此提交失败
-使用 post－review &#8211;debug比较了一下成功和失败的不同，发现在ubuntu下没有卡在git检测下面，好吧，为了比较错误，我在ubuntu下面安装了git. 之后再运行post-review &#8211;debug,这回检测在git处卡顿，之后出现一个fatal error,导致脚本判断当前不是一个git仓库，然后继续检测，直到SVN成功
-fatal error是怎么出现的呢？ 原来是<code>git rev-parse --git-dir</code>失败了，在mac下面这条指令输出的是～目录，而我的svn检出的目录就是～的子目录，我试着在它的上级目录重新检出，再执行<code>post-review --debug</code>,结果这一次和再ubuntu的情况一样了，检测git失败，接着检测到svn 成功发布
-所以说碰到这种情况，一种解决方式就是避开git的git-dir（包括其子目录）检出svn仓库</p>
-
-<p>虽然解决了，但不是很甘心，应该还有其他的办法。
-供我研究折腾的时间不多，马上要策划公司的公共组件了，先记录下来，留待以后折腾：</p>
-
-<ul>
-<li><p>既然post-review debug的时候有一个checking顺序，那就应该可以配置这个顺序，让svn优先级大于git,这样也可以解决问题</p></li>
-<li><p>既然是卡在 <code>git rev-parse --git-dir</code>上面，那就应该可以修改git-dir来避开检出的svn</p></li>
-<li><p>难道这不是一个bug？有机会还是需要让reviewboard的那群家伙知道 ：）</p></li>
-</ul>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/03/29/reviewboardda-jian/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -178,26 +148,15 @@ fatal error是怎么出现的呢？ 原来是<code>git rev-parse --git-dir</code
 
 <p>RSA的算法涉及三个参数，n、e1、e2。
 其中，n是两个大质数p、q的积，n的二进制表示时所占用的位数，就是所谓的密钥长度。
-e1和e2是一对相关的值，e1可以任意取，但要求e1与(p-1)(q-1）互质；再选择e2，要求(e2e1)mod((p-1)*(q-1))=1。
+ee和e2是一对相关的值，e1可以任意取，但要求e1与(p-1)(q-1）互质；再选择e2，要求(e2e1)mod((p-1)*(q-1))=1。
 (n及e1),(n及e2)就是密钥对。</p>
 
-<p>RSA加解密的算法完全相同,设A为明文，B为密文，则：A=B<sup>e1</sup> mod n；B=A<sup>e2</sup> mod n；
-e1和e2可以互换使用，即：
-A=B<sup>e2</sup> mod n；B=A<sup>e1</sup> mod n；</p>
-
-<p>使用RSA有两种情况：</p>
-
-<ol>
-<li><p>对数据加密：您希望只有您的朋友可以解密，这样的话，您需要首先获取您朋友的密钥对中公开的那一个密钥，e及n。然后用这个密钥进行加密，这样密文只有您的朋友可以解密，因为对应的私钥只有您朋友拥有。</p></li>
-<li><p>数字签名：您向朋友传送一段数据附加您的数字签名，您需要对您的数据进行MD5之类的运算以取得数据的&#8221;指纹&#8221;，再对&#8221;指纹&#8221;进行加密，加密将使用您自己的密钥对中的不公开的私钥。您的朋友收到数据后，用同样的运算获得数据指纹，再用您的公钥对加密指纹进行解密，比较解密结果与他自己计算出来的指纹是否一致，即可确定数据是否的确是您发送的、以及在传输过程中是否被篡改。</p></li>
-</ol>
-
-
-<p>密钥的获得：通常由某个机构颁发（如CA中心），当然也可以自己创建密钥，但这样创建的密钥不具有权威性。</p>
-
-<p>密钥的计算：如果加密强度为1024位，则结果会在有效数据前面补0以补齐不足的位数。补入的0并不影响解密运算。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/03/12/rsasuan-fa/">Read on &rarr;</a>
+    </footer>
   
 
 
