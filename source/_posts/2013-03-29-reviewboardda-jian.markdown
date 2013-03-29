@@ -9,6 +9,7 @@ categories:
 之前在Mac上折腾了一上午，最终因为包依赖的问题而放弃，转而投向了Ubuntu,因为apt-get实在是太好用，省去了许多包管理带来的麻烦
 不过在Ubuntu上安装也不会很省心，前面一路顺风，当执行 `easy_install ReviewBoard` 时候总是卡在了安装pytz上面，提示访问http://pytz.sourceforge.net 超时，但ping的时候又显示okay,所以怀疑是读取到下载地址后的下载超时，总不能在一棵树上吊死，所以只能先手动装上pytz,执行`easy_install pytz`完成之后继续`easy_instal ReviewBoard`
 之后也碰到过其他的错误，不过google一下，基本都能解决
+<!-- more -->
 
 安装完了ReviewBoard,就可以开始配置站点了，在此之前，最好先用mysql新建一张表，然后执行 `rb-site install /var/www/reviews.example.com` 之后就进入了一个交互式的安装过程啦，输入之前创建的表名，以及对该表有创建修改权限的用户（可以填入root用户，当然你也可以使用GRANT新指定一个用户），之后填入你的admin帐号信息，一路Next
 
